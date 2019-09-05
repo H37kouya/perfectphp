@@ -1,5 +1,12 @@
 <?php
 
+namespace Core;
+
+use Core\View;
+use Core\Application;
+use Core\HttpNotFoundException;
+use Core\UnauthorizedActionException;
+
 abstract class Controller
 {
     /**

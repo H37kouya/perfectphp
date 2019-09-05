@@ -1,5 +1,14 @@
 <?php
 
+namespace Core;
+
+use Core\Router;
+use Core\Request;
+use Core\Session;
+use Core\Response;
+use Core\DbManager;
+use Core\HttpNotFoundException;
+
 abstract class Application
 {
     /**
