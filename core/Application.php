@@ -94,8 +94,10 @@ abstract class Application
 
     /**
      * アプリケーションの設定
+     *
+     * @return void
      */
-    protected function configure()
+    protected function configure(): void
     {
     }
 
