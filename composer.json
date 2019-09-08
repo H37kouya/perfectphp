@@ -1,0 +1,14 @@
+{
+    "name": "perfectphp",
+    "description": "The perfectphp Framework.",
+    "require": {},
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core/",
+            "App\\": "app/",
+            "App\\Controllers": "app/Controllers",
+            "App\\Models": "app/Models"
+        }
+    }
+}
