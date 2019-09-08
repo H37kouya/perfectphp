@@ -165,6 +165,11 @@ abstract class Application
         return $this->db_manager;
     }
 
+    /**
+     * appのパスを返す関数
+     *
+     * @return string
+     */
     public function getAppDir(): string
     {
         return $this->getRootDir() . '/app';
