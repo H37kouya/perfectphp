@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use PDO;
+
 class DbManager
 {
     /**
@@ -41,14 +43,14 @@ class DbManager
             'options'  => [],
         ], $params);
 
-        $con = new \PDO(
+        $con = new PDO(
             $params['dsn'],
             $params['user'],
             $params['password'],
             $params['options'],
         );
 
-        $con->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
         $this->connections[$name] = $con;
@@ -108,7 +110,7 @@ class DbManager
     public function get(string $repository_name): DbRepository
     {
         if (!isset($this->repositories[$repository_name])) {
-            $repository_class = $repository_name . 'Repository';
+            $repository_class = '\App\Models\\' . $repository_name . 'Repository';
             $con = $this->getConnectionForRepository($repository_name);
 
             $repository = new $repository_class($con);

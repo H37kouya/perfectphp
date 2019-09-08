@@ -2,6 +2,9 @@
 
 namespace Core;
 
+use PDO;
+use PDOStatement;
+
 class DbRepository
 {
     /**
