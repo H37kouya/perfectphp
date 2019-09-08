@@ -70,7 +70,7 @@ abstract class Controller
         $this->controller_name = strtolower(substr(get_class($this), 0, -10));
 
         $this->application = $application;
-        $this->request     = $application->getReqest();
+        $this->request     = $application->getRequest();
         $this->response    = $application->getResponse();
         $this->session     = $application->getSession();
         $this->db_manager  = $application->getDbManager();
@@ -143,7 +143,7 @@ abstract class Controller
             $template = $this->action_name;
         }
 
-        $path = $this->controller_name . '/' . $template;
+        $path = str_replace('app\controllers\\' , '', $this->controller_name) . '/' . $template;
 
         return $view->render($path, $variables, $layout);
     }

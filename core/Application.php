@@ -172,7 +172,7 @@ abstract class Application
      */
     public function getControllerDir(): string
     {
-        return $this->getRootDir(). '/controllers';
+        return $this->getRootDir(). '/Controllers';
     }
 
     /**
@@ -192,7 +192,7 @@ abstract class Application
      */
     public function getModelDir(): string
     {
-        return $this->getRootDir(). '/models';
+        return $this->getRootDir(). '/Models';
     }
 
     /**
@@ -223,7 +223,7 @@ abstract class Application
             $controller = $params['controller'];
             $action = $params['action'];
 
-            $this->runAction($controller, $$action, $params);
+            $this->runAction($controller, $action, $params);
         } catch (HttpNotFoundException $e) {
             $this->render404Page($e);
         } catch (UnauthorizedActionException $e) {
@@ -252,7 +252,7 @@ abstract class Application
         $controller = $this->findController($controller_class);
 
         if ($controller === false) {
-            throw new HttpNotFoundException($controller_class . 'controller is not found');
+            throw new HttpNotFoundException($controller_class . ' controller is not found');
         }
 
         $content = $controller->run($action, $params);
@@ -264,23 +264,27 @@ abstract class Application
      * controllerクラスを生成する関数
      *
      * @param string $controller_class
-     * @return Controller
+     * @return Controller|false
      */
-    public function findController(string $controller_class): Controller
+    public function findController(string $controller_class)
     {
-        if (!class_exists($controller_class)) {
-            $controller_file = $this->getControllerDir() . '/' . $controller_class . '.php';
-        }
+        // echo $controller_class . "<br>";
+        // if (!class_exists($controller_class)) {
+        //     $controller_file = $this->getControllerDir() . '/' . $controller_class . '.php';
+        //     echo $controller_file . '<br>';
+        // }
 
-        if (!is_readable($controller_file)) {
-            return false;
-        } else {
-            require_once $controller_file;
+        // if (!is_readable($controller_file)) {
+        //     return false;
+        // } else {
+        //     require_once $controller_file;
 
-            if (!class_exists($controller_class)) {
-                return false;
-            }
-        }
+        //     if (!class_exists($controller_class)) {
+        //         return false;
+        //     }
+        // }
+
+        $controller_class = "\App\Controllers\\" . $controller_class;
 
         // ControllerクラスのコンストラクタにApplicationクラス自身を渡す。
         return new $controller_class($this);

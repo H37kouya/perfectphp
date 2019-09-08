@@ -53,7 +53,7 @@ class View
      */
     public function render(string $_path, array $_varibales = [], $_layout = false): string
     {
-        $_file = $this->base_dir . '/' .$_path . '.php';
+        $_file = $this->base_dir . '/' . $_path . '.php';
 
         // 連想配列のそれぞれの要素を変数展開
         extract(array_merge($this->defaults, $_varibales));

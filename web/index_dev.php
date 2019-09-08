@@ -1,7 +1,9 @@
 <?php
 
-require '../bootstrap.php';
-require '../MiniBlogApplication.php';
+require __DIR__ . '/../vendor/autoload.php';
 
-$app = new MiniBlogApplication(true);
+require '../bootstrap.php';
+// require '../MiniBlogApplication.php';
+
+$app = new \App\MiniBlogApplication(true);
 $app->run();

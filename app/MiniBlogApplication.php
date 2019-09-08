@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 use Core\Application;
 
 class MiniBlogApplication extends Application
@@ -18,7 +20,7 @@ class MiniBlogApplication extends Application
      */
     public function getRootDir(): string
     {
-        return dirname(__FILE__);
+        return str_replace('\app' , '', dirname(__FILE__));
     }
 
     /**
@@ -29,7 +31,13 @@ class MiniBlogApplication extends Application
     protected function registerRoutes(): array
     {
         return [
-
+            'account' => [
+                'controller' => 'account',
+                'action' => 'index',
+            ],
+            'account/:action' => [
+                'controller' => 'account',
+            ]
         ];
     }
 
@@ -41,7 +49,7 @@ class MiniBlogApplication extends Application
     protected function configure(): void
     {
         $this->db_manager->connect('master', [
-            'dsn' => 'mysql:dbname=mini_blog;host=localhost',
+            'dsn' => 'mysql:dbname=perfectphp;host=localhost',
             'user' => 'root',
             'password' => ''
         ]);
