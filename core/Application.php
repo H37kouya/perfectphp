@@ -165,6 +165,11 @@ abstract class Application
         return $this->db_manager;
     }
 
+    public function getAppDir(): string
+    {
+        return $this->getRootDir() . '/app';
+    }
+
     /**
      * controllerのパスを返す関数
      *
@@ -172,7 +177,7 @@ abstract class Application
      */
     public function getControllerDir(): string
     {
-        return $this->getRootDir(). '/Controllers';
+        return $this->getAppDir(). '/Controllers';
     }
 
     /**
@@ -192,7 +197,7 @@ abstract class Application
      */
     public function getModelDir(): string
     {
-        return $this->getRootDir(). '/Models';
+        return $this->getAppDir(). '/Models';
     }
 
     /**
