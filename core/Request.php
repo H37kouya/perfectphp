@@ -80,6 +80,7 @@ class Request
 
     /**
      * リクエストURIを取得
+     * http://localhost/foo/bar の foo/barの部分
      *
      * @return string
      */
@@ -95,6 +96,7 @@ class Request
      */
     public function getBaseUrl(): ?string
     {
+        // index_dev.php | index.php の部分
         $script_name = $_SERVER['SCRIPT_NAME'];
 
         $request_uri = $this->getReqestUri();
