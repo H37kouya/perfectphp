@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use DateTime;
 use Core\DbRepository;
 
 class StatusRepository extends DbRepository
 {
     public function insert(string $user_id, string $body)
     {
-        $now = new \DateTime();
+        $now = new DateTime();
 
         $sql = "INSERT INTO status(user_id, body, created_at) VALUES(:user_id, :body, :created_at)";
 

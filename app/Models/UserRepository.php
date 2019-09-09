@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateTime;
 use Core\DbRepository;
 
 class UserRepository extends DbRepository
