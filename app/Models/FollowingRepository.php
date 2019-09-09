@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use PDOStatement;
 use Core\DbRepository;
 
 class FollowingRepository extends DbRepository
@@ -12,9 +11,9 @@ class FollowingRepository extends DbRepository
      *
      * @param mixed $user_id
      * @param mixed $following_id
-     * @return PDOStatement
+     * @return void
      */
-    public function insert($user_id, $following_id): PDOStatement
+    public function insert($user_id, $following_id): void
     {
         $sql = "INSERT INTO following VALUES(:user_id, :following_id)";
 

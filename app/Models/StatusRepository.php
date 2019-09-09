@@ -7,7 +7,7 @@ use Core\DbRepository;
 
 class StatusRepository extends DbRepository
 {
-    public function insert(string $user_id, string $body)
+    public function insert(string $user_id, string $body): void
     {
         $now = new DateTime();
 
@@ -20,7 +20,7 @@ class StatusRepository extends DbRepository
         ]);
     }
 
-    public function fetchAllPersonalArchivesByUserId(?string $user_id)
+    public function fetchAllPersonalArchivesByUserId(?string $user_id): array
     {
         $sql = "SELECT a.*, u.user_name FROM status a LEFT JOIN user u ON a.user_id = u.id WHERE u.id = :user_id ORDER BY a.created_at DESC";
 
