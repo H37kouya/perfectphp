@@ -13,6 +13,19 @@ class AccountController extends Controller
         return $this->render(['user' => $user]);
     }
 
+    public function signinAction(): string
+    {
+        if ($this->session->isAuthenticated()) {
+            return $this->redirect('/account');
+        }
+
+        return $this->render([
+            'user_name' => '',
+            'password' => '',
+            '_token' => $this->generateCsrfToken('account/signin'),
+        ]);
+    }
+
     public function signupAction(): string
     {
         return $this->render([
