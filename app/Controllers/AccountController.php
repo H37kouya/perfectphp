@@ -16,8 +16,12 @@ class AccountController extends Controller
     public function indexAction(): string
     {
         $user = $this->session->get('user');
+        $followings = $this->db_manager->get('User')->fetchAllFollowingsByUserId($user['id']);
 
-        return $this->render(['user' => $user]);
+        return $this->render([
+            'user' => $user,
+            'followings' => $followings,
+        ]);
     }
 
     public function signinAction(): string
@@ -119,12 +123,10 @@ class AccountController extends Controller
         }
 
         if (count($errors) === 0) {
-
             $user_repository = $this->sb_manager->get('User');
             $user = $user_repository->fetchByUserName($user_name);
 
-            if (!$user || ($user['password'] !== $user_repository->hashPassword($password)))
-            {
+            if (!$user || ($user['password'] !== $user_repository->hashPassword($password))) {
                 $errors[] = 'ユーザーIDかパスワードが不正です。';
             } else {
                 $this->session->setAuthenticated(true);

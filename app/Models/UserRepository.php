@@ -70,4 +70,17 @@ class UserRepository extends DbRepository
 
         return false;
     }
+
+    /**
+     * フォローしているユーザを取得するメソッド
+     *
+     * @param string $user_id
+     * @return array
+     */
+    public function fetchAllFollowingsByUserId(string $user_id): array
+    {
+        $sql = "SELECT u.* FROM user u LEFT JOIN following f ON f.following_id = u.id WHERE f.user_id = :user_id";
+
+        return $this->fetchAll($sql, [':user_id' => $user_id]);
+    }
 }
