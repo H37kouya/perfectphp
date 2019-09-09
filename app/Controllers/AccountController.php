@@ -6,6 +6,13 @@ use Core\Controller;
 
 class AccountController extends Controller
 {
+    public function indexAction(): string
+    {
+        $user = $this->session->get('user');
+
+        return $this->render(['user' => $user]);
+    }
+
     public function signupAction(): string
     {
         return $this->render([
@@ -33,15 +40,15 @@ class AccountController extends Controller
 
         if (!strlen($user_name)) {
             $errors[] = 'ユーザーIDを入力してください。';
-        } else if (!preg_match('/^\w{3, 20}$/', $user_name)) {
+        } elseif (!preg_match('/^\w{3, 20}$/', $user_name)) {
             $errors[] = 'ユーザーIDは半角英数字およびアンダースコアを 3 ～ 20 文字以内で入力してください。';
-        } else if (!$this->db_manager->get('User')->isUniqueUserName($user_name)) {
+        } elseif (!$this->db_manager->get('User')->isUniqueUserName($user_name)) {
             $errors[] = 'ユーザーIDは既に使われています。';
         }
 
         if (!strlen($password)) {
             $errors[] = 'パスワードを入力してください。';
-        } else if (strlen($password) < 4 || strlen($password) > 30) {
+        } elseif (strlen($password) < 4 || strlen($password) > 30) {
             $errors[] = 'パスワードは4~30文字以内で入力してください。';
         }
 
