@@ -11,7 +11,7 @@ class MiniBlogApplication extends Application
      *
      * @var array
      */
-    protected $login_action = ['account', 'signup'];
+    protected $login_action = ['account', 'signin'];
 
     /**
      * ルートディレクトリへのパスを返すメソッド

@@ -6,6 +6,13 @@ use Core\Controller;
 
 class StatusController extends Controller
 {
+    /**
+     * ログイン必須のActionを追加
+     *
+     * @var array
+     */
+    protected $auth_actions = ['index', 'post'];
+
     public function indexAction(): string
     {
         $user = $this->session->get('user');

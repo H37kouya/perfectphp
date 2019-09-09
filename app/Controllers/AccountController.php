@@ -6,6 +6,13 @@ use Core\Controller;
 
 class AccountController extends Controller
 {
+    /**
+     * ログイン必須のActionを追加
+     *
+     * @var array
+     */
+    protected $auth_actions = ['index', 'signout'];
+
     public function indexAction(): string
     {
         $user = $this->session->get('user');
