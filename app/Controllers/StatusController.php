@@ -13,6 +13,11 @@ class StatusController extends Controller
      */
     protected $auth_actions = ['index', 'post'];
 
+    /**
+     * indexアクション
+     *
+     * @return string
+     */
     public function indexAction(): string
     {
         $user = $this->session->get('user');
@@ -25,6 +30,11 @@ class StatusController extends Controller
         ]);
     }
 
+    /**
+     * postアクション
+     *
+     * @return string|void
+     */
     public function postAction()
     {
         if (!$this->request->isPost()) {
@@ -42,7 +52,7 @@ class StatusController extends Controller
 
         if (!strlen($body)) {
             $errors[] = 'ひとことを入力してください。';
-        } else if (mb_strlen($body) > 200) {
+        } elseif (mb_strlen($body) > 200) {
             $errors[] = 'ひとことは200文字以内で入力してください。';
         }
 
@@ -64,7 +74,13 @@ class StatusController extends Controller
         ], 'index');
     }
 
-    public function userAction(array $params): string
+    /**
+     * userアクション
+     *
+     * @param array $params
+     * @return void|string
+     */
+    public function userAction(array $params)
     {
         $user = $this->db_manager->get('User')->fetchByUserName($params['user_name']);
         if (!$user) {
@@ -90,6 +106,12 @@ class StatusController extends Controller
         ]);
     }
 
+    /**
+     * showアクション
+     *
+     * @param array $params
+     * @return string
+     */
     public function showAction(array $params): string
     {
         $status = $this->db_manager->get('Status')->fetchByIdAndUserName($params['id'], $params['user_name']);
@@ -100,6 +122,5 @@ class StatusController extends Controller
         return $this->render([
             'status' => $status,
         ]);
-
     }
 }
