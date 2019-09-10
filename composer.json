@@ -1,16 +1,17 @@
 {
-    "name": "perfectphp",
+    "name": "h37kouya/perfectphp",
     "description": "The perfectphp Framework.",
     "require": {
-        "php": ">=7.2.0"
+        "php": ">=7.2.0",
+        "vlucas/phpdotenv": "^3.5"
     },
     "require-dev": {},
     "autoload": {
         "psr-4": {
             "Core\\": "core/",
             "App\\": "app/",
-            "App\\Controllers": "app/Controllers",
-            "App\\Models": "app/Models"
+            "App\\Controllers\\": "app/Controllers",
+            "App\\Models\\": "app/Models"
         }
     }
 }
