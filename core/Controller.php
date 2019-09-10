@@ -81,11 +81,11 @@ abstract class Controller
      *
      * @param string $action
      * @param array $params
-     * @return string レスポンスとして返すコンテンツ
+     * @return string|null レスポンスとして返すコンテンツ
      *
      * @throws UnauthorizedActionException 認証が必須なアクションに認証前にアクセスした場合
      */
-    public function run(string $action, array $params = []): string
+    public function run(string $action, array $params = []): ?string
     {
         $this->action_name = $action;
 
