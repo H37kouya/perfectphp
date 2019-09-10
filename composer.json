@@ -1,7 +1,9 @@
 {
     "name": "perfectphp",
     "description": "The perfectphp Framework.",
-    "require": {},
+    "require": {
+        "php": ">=7.2.0"
+    },
     "require-dev": {},
     "autoload": {
         "psr-4": {
