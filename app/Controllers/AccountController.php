@@ -13,6 +13,11 @@ class AccountController extends Controller
      */
     protected $auth_actions = ['index', 'signout', 'follow'];
 
+    /**
+     * indexアクション
+     *
+     * @return string
+     */
     public function indexAction(): string
     {
         $user = $this->session->get('user');
@@ -24,6 +29,11 @@ class AccountController extends Controller
         ]);
     }
 
+    /**
+     * signinアクション
+     *
+     * @return string
+     */
     public function signinAction(): string
     {
         if ($this->session->isAuthenticated()) {
@@ -37,6 +47,11 @@ class AccountController extends Controller
         ]);
     }
 
+    /**
+     * signupアクション
+     *
+     * @return string
+     */
     public function signupAction(): string
     {
         return $this->render([
@@ -46,6 +61,11 @@ class AccountController extends Controller
         ]);
     }
 
+    /**
+     * registerアクション
+     *
+     * @return void|string
+     */
     public function registerAction()
     {
         if (!$this->request->isPost()) {
@@ -94,6 +114,11 @@ class AccountController extends Controller
         ], 'signup');
     }
 
+    /**
+     * authenticateアクション
+     *
+     * @return string|void
+     */
     public function authenticateAction()
     {
         if ($this->session->isAuthenticated()) {
@@ -144,6 +169,11 @@ class AccountController extends Controller
         ], 'signin');
     }
 
+    /**
+     * signoutアクション
+     *
+     * @return void
+     */
     public function signoutAction()
     {
         $this->session->clear();
@@ -152,6 +182,11 @@ class AccountController extends Controller
         return $this->redirect('/account/signin');
     }
 
+    /**
+     * followアクション
+     *
+     * @return void
+     */
     public function followAction()
     {
         if (!$this->request->isPost()) {
