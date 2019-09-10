@@ -43,9 +43,9 @@ class UserRepository extends DbRepository
      * ユーザーIDを元にレコードを取得するメソッド
      *
      * @param string $user_name
-     * @return array
+     * @return array|false
      */
-    public function fetchByUserName(string $user_name): array
+    public function fetchByUserName(string $user_name)
     {
         $sql = "SELECT * FROM user WHERE user_name = :user_name";
 

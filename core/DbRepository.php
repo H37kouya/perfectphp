@@ -49,9 +49,9 @@ class DbRepository
      *
      * @param string $sql
      * @param array $params
-     * @return array
+     * @return array|false
      */
-    public function fetch(string $sql, array $params = []): array
+    public function fetch(string $sql, array $params = [])
     {
         return $this->execute($sql, $params)->fetch(PDO::FETCH_ASSOC);
     }
