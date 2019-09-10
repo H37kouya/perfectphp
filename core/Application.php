@@ -224,6 +224,16 @@ abstract class Application
     }
 
     /**
+     * resourcesのパスを返す関数
+     *
+     * @return string
+     */
+    public function getResourcesDir(): string
+    {
+        return $this->getRootDir() . '/resources';
+    }
+
+    /**
      * Get the globally available instance of the application.
      *
      * @return static

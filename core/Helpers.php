@@ -67,3 +67,20 @@ if (!function_exists('web_path')) {
         return app()->getWebDir() . $path;
     }
 }
+
+if (!function_exists('resources_path')) {
+    /**
+     * resourcesディレクトリまでのパスを返す関数
+     *
+     * @param string $path
+     * @return string
+     */
+    function resources_path(string $path): string
+    {
+        if (substr($path, 0, 1) !== '/') {
+            $path = '/' . $path;
+        }
+
+        return app()->getResourcesDir() . $path;
+    }
+}
