@@ -1,0 +1,128 @@
+<?php
+
+namespace Core;
+
+use Dotenv\Dotenv as BaseDotenv;
+
+class Dotenv
+{
+    /**
+     * BaseDotenvクラスを格納
+     *
+     * @var BaseDotenv
+     */
+    protected $dotenv;
+
+    /**
+     * envのパスを保存
+     *
+     * @var string
+     */
+    protected $env_path = null;
+
+    /**
+     * envの必須項目を格納
+     *
+     * @var array
+     */
+    protected $env_required = [
+        'DB_CONNECTION',
+        'DB_HOST',
+        'DB_DATABASE',
+        'DB_USERNAME',
+        'DB_PASSWORD'
+    ];
+
+    public function __construct($env_required = null, $env_path = null)
+    {
+        $this->setEnvDir($env_path);
+        $this->initialize();
+        $this->setEnvRequired($env_required);
+        $this->dotenv->load();
+        $this->envRequired();
+    }
+
+    /**
+     * クラスをロードするメソッド
+     *
+     * @return void
+     */
+    protected function initialize(): void
+    {
+        $this->dotenv = BaseDotenv::create($this->getEnvDir());
+    }
+
+    /**
+     * envのパスを返す関数
+     *
+     * @return string
+     */
+    public function getEnvDir(): string
+    {
+        return !is_null($this->env_path) ? $this->env_path : __DIR__ . '/..';
+    }
+
+    /**
+     * envのパスをセットするメソッド
+     *
+     * @param string $env_path
+     * @return string
+     */
+    public function setEnvDir(?string $env_path): void
+    {
+        if (!is_null($env_path)) {
+            $this->env_path = $env_path;
+        }
+    }
+
+    /**
+     * envの必須項目をセットする
+     *
+     * @param string|array|null $env_required
+     * @return void
+     */
+    public function setEnvRequired($env_required): void
+    {
+        if (!is_null($env_required)) {
+            if (is_array($env_required)) {
+                $this->env_required = array_merge($this->env_required, $env_required);
+            }
+
+            if (is_string($env_required)) {
+                $this->env_required[] = $env_required;
+            }
+        }
+    }
+
+    /**
+     * envの必須項目が存在するかチェックする
+     *
+     * @return void
+     */
+    public function envRequired(): void
+    {
+        $this->dotenv->required($this->env_required);
+    }
+
+    /**
+     * 環境変数を取得するメソッド
+     *
+     * @param string $varname
+     * @return string|array|bool
+     */
+    public function getenv(string $varname)
+    {
+        return getenv($varname);
+    }
+
+    /**
+     * 環境変数を取得するメソッド
+     *
+     * @param string $varname
+     * @return string|array|bool
+     */
+    public function env(string $varname)
+    {
+        return $this->getenv($varname);
+    }
+}

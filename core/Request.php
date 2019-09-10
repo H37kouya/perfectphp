@@ -2,8 +2,31 @@
 
 namespace Core;
 
+use Core\Dotenv;
+
 class Request
 {
+    /**
+     * Dotenvクラスを格納
+     *
+     * @var Dotenv
+     */
+    protected $dotenv;
+
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * クラスをロードするメソッド
+     *
+     * @return void
+     */
+    protected function initialize(): void
+    {
+        $this->dotenv = new Dotenv();
+    }
     /**
      * HTTPメソッドがPOSTかどうか判定するメソッド。
      *
@@ -132,5 +155,27 @@ class Request
         $path_info = (string) substr($request_uri, strlen($base_url));
 
         return $path_info;
+    }
+
+    /**
+     * 環境変数を取得するメソッド
+     *
+     * @param string $varname
+     * @return string|array|bool
+     */
+    public function getenv(string $varname)
+    {
+        return $this->dotenv->env($varname);
+    }
+
+    /**
+     * 環境変数を取得するメソッド
+     *
+     * @param string $varname
+     * @return string|array|bool
+     */
+    public function env(string $varname)
+    {
+        return $this->dotenv->env($varname);
     }
 }
