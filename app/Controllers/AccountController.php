@@ -64,7 +64,7 @@ class AccountController extends Controller
 
         if (!strlen($user_name)) {
             $errors[] = 'ユーザーIDを入力してください。';
-        } elseif (!preg_match('/^\w{3, 20}$/', $user_name)) {
+        } elseif (!preg_match('/^\w{3,20}$/', $user_name)) {
             $errors[] = 'ユーザーIDは半角英数字およびアンダースコアを 3 ～ 20 文字以内で入力してください。';
         } elseif (!$this->db_manager->get('User')->isUniqueUserName($user_name)) {
             $errors[] = 'ユーザーIDは既に使われています。';
@@ -123,7 +123,7 @@ class AccountController extends Controller
         }
 
         if (count($errors) === 0) {
-            $user_repository = $this->sb_manager->get('User');
+            $user_repository = $this->db_manager->get('User');
             $user = $user_repository->fetchByUserName($user_name);
 
             if (!$user || ($user['password'] !== $user_repository->hashPassword($password))) {
