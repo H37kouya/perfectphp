@@ -34,9 +34,9 @@ class DbRepository
      *
      * @param string $sql
      * @param array $params
-     * @return PDOStatement $stmt
+     * @return PDOStatement|bool $stmt
      */
-    public function execute(string $sql, array $params = []): PDOStatement
+    public function execute(string $sql, array $params = [])
     {
         $stmt = $this->con->prepare($sql);
         $stmt->execute($params);
