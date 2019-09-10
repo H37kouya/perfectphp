@@ -68,10 +68,18 @@ class MiniBlogApplication extends Application
      */
     protected function configure(): void
     {
+        $connection = $this->request->env('DB_CONNECTION');
+        $name = $this->request->env('DB_DATABASE');
+        $host = $this->request->env('DB_HOST');
+        $username = $this->request->env('DB_USERNAME');
+        $password = $this->request->env('DB_PASSWORD');
+
+        $dsn = $connection . ':dbname=' . $name . ';host=' . $host;
+
         $this->db_manager->connect('master', [
-            'dsn' => 'mysql:dbname=perfectphp;host=localhost',
-            'user' => 'root',
-            'password' => ''
+            'dsn' => $dsn,
+            'user' => $username,
+            'password' => $password,
         ]);
     }
 }
