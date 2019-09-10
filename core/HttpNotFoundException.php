@@ -2,6 +2,8 @@
 
 namespace Core;
 
-class HttpNotFoundException extends \Exception
+use Exception;
+
+class HttpNotFoundException extends Exception
 {
 };
