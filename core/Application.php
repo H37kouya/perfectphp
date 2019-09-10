@@ -8,6 +8,7 @@ use Core\Session;
 use Core\Response;
 use Core\DbManager;
 use Core\HttpNotFoundException;
+use Core\UnauthorizedActionException;
 
 abstract class Application
 {
