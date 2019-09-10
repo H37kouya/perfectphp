@@ -13,6 +13,13 @@ use Core\UnauthorizedActionException;
 abstract class Application
 {
     /**
+     * The current globally available application.
+     *
+     * @var static
+     */
+    protected static $instance;
+
+    /**
      * デバッグするか否か
      *
      * @var boolean
@@ -215,6 +222,20 @@ abstract class Application
     {
         return $this->getRootDir() . '/web';
     }
+
+    /**
+     * Get the globally available instance of the application.
+     *
+     * @return static
+     */
+    public static function getInstance()
+    {
+        if (is_null(static::$instance)) {
+            static::$instance = new static;
+        }
+        return static::$instance;
+    }
+
 
     /**
      * アプリケーションを実行する
