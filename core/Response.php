@@ -42,7 +42,7 @@ class Response
         header('HTTP/1.1' . $this->status_code . '' . $this->status_text);
 
         foreach ($this->http_header as $name => $value) {
-            header($name, ':', $value);
+            header($name. ': '. $value);
         }
 
         echo $this->content;
