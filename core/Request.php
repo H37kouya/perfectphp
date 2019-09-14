@@ -222,11 +222,12 @@ class Request
 
         if ($arr === null) {
             return $this->asset($path);
-        } else {
+        }
+
+        if (isset($arr[$path])) {
             return $this->asset($arr[$path]);
         }
 
-        return $url;
-
+        return $this->asset($path);
     }
 }
