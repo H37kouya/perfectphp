@@ -9,14 +9,7 @@ if (!function_exists('asset')) {
      */
     function asset(string $path): string
     {
-        if (substr($path, 0, 1) !== '/') {
-            $path = '/' . $path;
-        }
-
-        $protocol = app()->getRequest()->isSsl() ? 'https://' : 'http://';
-        $host = app()->getRequest()->getHost();
-
-        return $protocol . $host . app()->getRequest()->getBaseUrl() . $path;
+        return app()->getRequest()->asset($path);
     }
 }
 
@@ -85,5 +78,12 @@ if (!function_exists('resources_path')) {
         }
 
         return app()->getResourcesDir() . $path;
+    }
+}
+
+if (!function_exists('mix')) {
+    function mix(string $path): string
+    {
+        return app()->getRequest()->mix($path);
     }
 }

@@ -13,9 +13,12 @@ class Request
      */
     protected $dotenv;
 
-    public function __construct()
+    protected $webDir;
+
+    public function __construct(string $webDir = __DIR__ . '/../web')
     {
         $this->initialize();
+        $this->webDir = $webDir;
     }
 
     /**
@@ -177,5 +180,53 @@ class Request
     public function env(string $varname)
     {
         return $this->dotenv->env($varname);
+    }
+
+    /**
+     * protocolを返す関数
+     *
+     * @return string
+     */
+    public function getProtcol(): string
+    {
+        return $this->isSsl() ? 'https://' : 'http://';
+    }
+
+    /**
+     * fullURLを返す関数
+     *
+     * @param string $path
+     * @return string
+     */
+    public function asset(string $path): string
+    {
+        if (substr($path, 0, 1) !== '/') {
+            $path = '/' . $path;
+        }
+
+        $protocol = $this->getProtcol();
+        $host = $this->getHost();
+
+        return $protocol . $host . $this->getBaseUrl() . $path;
+    }
+
+    public function mix(string $path): string
+    {
+        if (substr($path, 0, 1) !== '/') {
+            $path = '/' . $path;
+        }
+
+        $mix_json = $this->webDir . '/mix-manifest.json';
+        $json = mb_convert_encoding(file_get_contents($mix_json), 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+        $arr = json_decode($json, true);
+
+        if ($arr === null) {
+            return $this->asset($path);
+        } else {
+            return $this->asset($arr[$path]);
+        }
+
+        return $url;
+
     }
 }
