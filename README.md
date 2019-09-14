@@ -6,4 +6,5 @@
 
 - composerによるクラスのオートローダの実装
 - vlucas/phpdotenvを用いてdotenvの実装
+- filp/whoopsを用いてデバッグをより分かりやすくした。
 - helper関数の実装
