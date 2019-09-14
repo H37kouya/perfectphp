@@ -1,3 +1,5 @@
+/web/vendor
+/web/*/*.map
 /node_modules
 /vendor
 composer.lock
