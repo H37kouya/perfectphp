@@ -112,7 +112,24 @@ class Dotenv
      */
     public function getenv(string $varname)
     {
-        return getenv($varname);
+        $value = getenv($varname);
+
+        if (is_array($value) || is_bool($value)) {
+            return $value;
+        }
+
+        if (is_string($value)) {
+
+            if ( strcasecmp ($value, 'true') === 0) {
+                return true;
+            }
+
+            if ( strcasecmp ($value, 'false') === 0) {
+                return false;
+            }
+        }
+
+        return $value;
     }
 
     /**

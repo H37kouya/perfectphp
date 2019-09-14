@@ -78,7 +78,7 @@ abstract class Application
     {
         $debug = $this->request->env('DEBUG_MODE');
 
-        if ($debug == true) {
+        if ($debug === true) {
             $this->debug = true;
             new Whoops;
         } else {
