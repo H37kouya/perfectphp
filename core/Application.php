@@ -62,26 +62,25 @@ abstract class Application
      */
     protected $login_action = [];
 
-    public function __construct(bool $debug = false)
+    public function __construct()
     {
-        $this->setDebugMode($debug);
         $this->initialize();
+        $this->setDebugMode();
         $this->configure();
     }
 
     /**
      * デバッグモードに応じてエラー表示処理を変更する関数
      *
-     * @param boolean $debug
      * @return void
      */
-    protected function setDebugMode(bool $debug): void
+    protected function setDebugMode(): void
     {
-        if ($debug) {
+        $debug = $this->request->env('DEBUG_MODE');
+
+        if ($debug == true) {
             $this->debug = true;
             new Whoops;
-            // ini_set('display_errors', 1);
-            // error_reporting(-1);
         } else {
             $this->debug = false;
             ini_set('display_errors', 0);
