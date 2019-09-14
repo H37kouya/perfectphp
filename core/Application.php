@@ -3,6 +3,7 @@
 namespace Core;
 
 use Core\Router;
+use Core\Whoops;
 use Core\Request;
 use Core\Session;
 use Core\Response;
@@ -78,8 +79,9 @@ abstract class Application
     {
         if ($debug) {
             $this->debug = true;
-            ini_set('display_errors', 1);
-            error_reporting(-1);
+            new Whoops;
+            // ini_set('display_errors', 1);
+            // error_reporting(-1);
         } else {
             $this->debug = false;
             ini_set('display_errors', 0);

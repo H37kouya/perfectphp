@@ -5,7 +5,9 @@
         "php": ">=7.2.0",
         "vlucas/phpdotenv": "^3.5"
     },
-    "require-dev": {},
+    "require-dev": {
+        "filp/whoops": "^2.5"
+    },
     "autoload": {
         "files": [
             "Core/Helpers.php",
