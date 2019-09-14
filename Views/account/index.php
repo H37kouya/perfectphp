@@ -29,7 +29,7 @@
             <?php foreach ($followings as $following): ?>
             <li>
                 <a
-                    href="<?php echo $base_url; ?>/user/<?php echo $this->escape($following['user_name']) ?>">
+                    href="<?php echo asset('/user' . '/' . $this->escape($following['user_name'])); ?>">
                     <?php echo $this->escape($following['user_name']); ?>
                 </a>
             </li>

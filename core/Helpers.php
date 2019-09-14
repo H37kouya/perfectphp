@@ -13,7 +13,10 @@ if (!function_exists('asset')) {
             $path = '/' . $path;
         }
 
-        return app()->getRequest()->getBaseUrl() . $path;
+        $protocol = app()->getRequest()->isSsl() ? 'https://' : 'http://';
+        $host = app()->getRequest()->getHost();
+
+        return $protocol . $host . app()->getRequest()->getBaseUrl() . $path;
     }
 }
 
