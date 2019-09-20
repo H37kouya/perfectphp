@@ -15,23 +15,31 @@
 
 <body>
 
+
     <header id="header" class="header">
-        <h1><a href="<?php echo $base_url; ?>">Mini Blog</a></h1>
+        <nav id="nav" class="nav uk-navbar-container uk-padding-small" uk-navbar>
+            <div class="uk-navbar-left">
+                <h1><a href="<?php echo $base_url; ?>" class="uk-logo">Mini Blog</a></h1>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+
+                    <?php if ($session->isAuthenticated()) : ?>
+                    <li><a href="<?php echo asset('/'); ?>">ホーム</a></li>
+                    <li><a href="<?php echo asset('/account'); ?>">アカウント</a></li>
+
+                    <?php else : ?>
+
+                    <li><a href="<?php echo asset('/account/signin'); ?>">ログイン</a></li>
+                    <li><a href="<?php echo asset('/account/signup'); ?>">アカウント登録</a></li>
+
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </nav>
     </header>
 
-    <nav id="nav" class="nav">
-        <p>
-            <?php if ($session->isAuthenticated()) : ?>
-                <a href="<?php echo asset('/'); ?>">ホーム</a>
-                <a href="<?php echo asset('/account'); ?>">アカウント</a>
-            <?php else : ?>
-                <a href="<?php echo asset('/account/signin'); ?>">ログイン</a>
-                <a href="<?php echo asset('/account/signup'); ?>">アカウント登録</a>
-            <?php endif; ?>
-        </p>
-    </nav>
-
-    <main id="main" class="main">
+    <main id="main" class="main uk-section-small uk-padding">
         <?php echo $_content; ?>
     </main>
 
