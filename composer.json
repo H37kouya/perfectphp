@@ -10,8 +10,8 @@
     },
     "autoload": {
         "files": [
-            "Core/Helpers.php",
-            "App/Helpers.php"
+            "core/Helpers.php",
+            "app/Helpers.php"
         ],
         "psr-4": {
             "Core\\": "core/",
