@@ -20,7 +20,8 @@ class MiniBlogApplication extends Application
      */
     public function getRootDir(): string
     {
-        return str_replace('\app' , '', __DIR__);
+        // return str_replace('\app' , '', __DIR__);
+        return str_replace('/app' , '', __DIR__);
     }
 
     /**
