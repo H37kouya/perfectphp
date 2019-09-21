@@ -1,3 +1,4 @@
-html {
-    font-size: 16px;
-}
+@import "variable";
+@import "~uikit/src/scss/variables-theme.scss";
+@import "~uikit/src/scss/mixins-theme.scss";
+@import "uikit/util/**";

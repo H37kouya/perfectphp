@@ -1,0 +1,39 @@
+/* success */
+
+$button-success-background: $global-success-background !default;
+$button-success-color: $global-inverse-color !default;
+$button-success-hover-background: darken($button-success-background, 5%) !default;
+$button-success-hover-color: $global-inverse-color !default;
+$button-success-active-background: darken($button-success-background, 10%) !default;
+$button-success-active-color: $global-inverse-color !default;
+.uk-button-success {
+    background-color: $button-success-background;
+    color: $button-success-color !important;
+    @if(mixin-exists(hook-button-success)) {
+        @include hook-button-success();
+    }
+}
+
+
+/* Hover + Focus */
+
+.uk-button-success:hover,
+.uk-button-success:focus {
+    background-color: $button-success-hover-background;
+    color: $button-success-hover-color;
+    @if(mixin-exists(hook-button-success-hover)) {
+        @include hook-button-success-hover();
+    }
+}
+
+
+/* OnClick + Active */
+
+.uk-button-success:active,
+.uk-button-success.uk-active {
+    background-color: $button-success-active-background;
+    color: $button-success-active-color;
+    @if(mixin-exists(hook-button-success-active)) {
+        @include hook-button-success-active();
+    }
+}

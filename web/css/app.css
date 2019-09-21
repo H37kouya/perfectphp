@@ -1,5 +1,24 @@
-html {
-  font-size: 16px;
+/* success */
+
+.uk-button-success {
+  background-color: #5cb85c;
+  color: #fff !important;
+}
+
+/* Hover + Focus */
+
+.uk-button-success:hover,
+.uk-button-success:focus {
+  background-color: #4cae4c;
+  color: #fff;
+}
+
+/* OnClick + Active */
+
+.uk-button-success:active,
+.uk-button-success.uk-active {
+  background-color: #449d44;
+  color: #fff;
 }
 
 

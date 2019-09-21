@@ -115,8 +115,8 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\khasd\code\perfectphp\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\khasd\code\perfectphp\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/h37kouya/var/www/html/perfectphp/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/h37kouya/var/www/html/perfectphp/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
