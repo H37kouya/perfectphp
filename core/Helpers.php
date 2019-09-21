@@ -84,6 +84,12 @@ if (!function_exists('path_combine')) {
 }
 
 if (!function_exists('mix')) {
+    /**
+     * mixのhash値を付加する
+     *
+     * @param string $path
+     * @return string
+     */
     function mix(string $path): string
     {
         return app()->getRequest()->mix($path);
