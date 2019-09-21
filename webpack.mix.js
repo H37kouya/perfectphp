@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const glob = require("glob");
 
 const productionSourceMaps = false;
 const inProduction = mix.inProduction();
@@ -14,8 +15,13 @@ const inProduction = mix.inProduction();
  */
 
 mix
-    .js("resources/js/app.js", "web/js/")
+    .sourceMaps(productionSourceMaps, "source-map")
+    .setPublicPath("web")
+    .version();
+
+mix
     .sass("resources/sass/app.scss", "web/css/")
+    .js("resources/js/app.js", "web/js")
     .options({
         postCss: [
             require("css-mqpacker")({
@@ -25,9 +31,17 @@ mix
             require("postcss-sorting")
         ]
     })
-    .sourceMaps(productionSourceMaps, "source-map")
-    .setPublicPath("web")
-    .version();
+
+// Added webpackConfig settings
+mix.webpackConfig({
+    module: {
+        rules: [{
+            // Allow .scss files imported glob
+            test: /\.scss/,
+            loader: "import-glob-loader"
+        }]
+    }
+});
 
 // 本番環境外で処理
 if (!inProduction) {
