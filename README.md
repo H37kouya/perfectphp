@@ -5,6 +5,7 @@
 ## 追加したもの
 
 - composerによるクラスのオートローダの実装
-- vlucas/phpdotenvを用いてdotenvの実装
-- filp/whoopsを用いてデバッグをより分かりやすくした。
+- [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv)を用いてdotenvの実装
+- [filp/whoops](https://github.com/filp/whoops)を用いてデバッグをより分かりやすくした。
 - helper関数の実装
+- [uIkit](https://getuikit.com/)を使ったデザインの追加
