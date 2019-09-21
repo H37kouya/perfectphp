@@ -1,35 +1,30 @@
 <?php $this->setLayoutVar('title', 'アカウント'); ?>
 
 <section>
-    <h2>アカウント</h2>
+    <h2 class="uk-heading-bullet">アカウント</h2>
 
     <p>
         ユーザーID：
         <a
-            href="<?php echo $base_url; ?>/user/<?php echo $this->escape($user['user_name']); ?>">
+            href="<?php echo $base_url; ?>/user/<?php echo $this->escape($user['user_name']); ?>" class="uk-link-text">
             <strong><?php echo $this->escape($user['user_name']); ?></strong>
         </a>
     </p>
 
-    <ul>
-        <li>
-            <a href="<?php echo asset('/'); ?>">ホーム</a>
-        </li>
-        <li>
-            <a
-                href="<?php echo asset('/account/signout'); ?>">ログアウト</a>
-        </li>
-    </ul>
+    <div class="uk-flex">
+        <a href="<?php echo asset('/'); ?>" class="uk-button uk-button-secondary uk-margin-right">ホーム</a>
+        <a href="<?php echo asset('/account/signout'); ?>" class="uk-button uk-button-danger">ログアウト</a>
+    </div>
 
-    <section>
-        <h3>フォロー中</h3>
+    <section class="uk-section-small">
+        <h3 class="uk-heading-bullet">フォロー中</h3>
 
         <?php if (count($followings) > 0): ?>
-        <ul>
+        <ul class="uk-list">
             <?php foreach ($followings as $following): ?>
             <li>
                 <a
-                    href="<?php echo asset('/user' . '/' . $this->escape($following['user_name'])); ?>">
+                    href="<?php echo asset('/user' . '/' . $this->escape($following['user_name'])); ?>" class="uk-link-text">
                     <?php echo $this->escape($following['user_name']); ?>
                 </a>
             </li>

@@ -3,8 +3,6 @@
 <section>
     <h2 class="uk-heading-bullet">ログイン</h2>
 
-
-
     <form action="<?php echo asset('/account/authenticate'); ?>" method="post">
         <input type="hidden" name="_token" value="<?php echo $this->escape($_token); ?>">
 

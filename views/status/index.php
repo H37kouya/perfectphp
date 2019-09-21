@@ -20,7 +20,9 @@
         <p><input type="submit" value="発言" class="uk-button uk-button-primary"></p>
     </form>
 
-    <div id="statuses">
+    <hr class="uk-divider-icon">
+
+    <div id="statuses" class="" uk-grid>
         <?php foreach ($statuses as $status): ?>
         <?php echo $this->render('status/status', ['status' => $status]); ?>
         <?php endforeach; ?>
