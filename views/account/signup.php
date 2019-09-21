@@ -1,9 +1,10 @@
 <?php $this->setLayoutVar('title', 'アカウント登録') ?>
 
 <section>
-    <h2>アカウント登録</h2>
+    <h2 class="uk-heading-bullet">アカウント登録</h2>
 
-    <form action="<?php echo asset('/account/register'); ?>"
+    <form
+        action="<?php echo asset('/account/register'); ?>"
         method="post">
         <input type="hidden" name="_token" value="<?php echo $this->escape($_token); ?>">
 
@@ -19,7 +20,9 @@
         ?>
 
         <p>
-            <input type="submit" value="登録">
+            <input type="submit" value="登録" class="uk-button uk-button-primary">
+            <a href="<?php echo asset('/account/signin'); ?>"
+                class="uk-button uk-button-success">ログイン</a>
         </p>
     </form>
 </section>
