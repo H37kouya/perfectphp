@@ -19,7 +19,7 @@
     <header id="header" class="header">
         <nav id="nav" class="nav uk-navbar-container uk-padding-small" uk-navbar>
             <div class="uk-navbar-left">
-                <h1><a href="<?php echo $base_url; ?>" class="uk-logo">Mini Blog</a></h1>
+                <h1><a href="<?php echo asset('/'); ?>" class="uk-logo">Mini Blog</a></h1>
             </div>
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">
