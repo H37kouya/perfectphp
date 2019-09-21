@@ -69,7 +69,7 @@ class StatusController extends Controller
         return $this->render([
             'errors' => $errors,
             'body' => $body,
-            'status' => $statuses,
+            'statuses' => $statuses,
             '_token' => $this->generateCsrfToken('status/post'),
         ], 'index');
     }
