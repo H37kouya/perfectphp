@@ -22,11 +22,7 @@ if (!function_exists('base_path')) {
      */
     function base_path(string $path): string
     {
-        if (substr($path, 0, 1) !== '/') {
-            $path = '/' . $path;
-        }
-
-        return app()->getRootDir() . $path;
+        return path_combine(app()->getRootDir(), $path);
     }
 }
 
@@ -39,11 +35,7 @@ if (!function_exists('app_path')) {
      */
     function app_path(string $path): string
     {
-        if (substr($path, 0, 1) !== '/') {
-            $path = '/' . $path;
-        }
-
-        return app()->getAppDir() . $path;
+        return path_combine(app()->getAppDir(), $path);
     }
 }
 
@@ -56,11 +48,7 @@ if (!function_exists('web_path')) {
      */
     function web_path(string $path): string
     {
-        if (substr($path, 0, 1) !== '/') {
-            $path = '/' . $path;
-        }
-
-        return app()->getWebDir() . $path;
+        return path_combine(app()->getWebDir(), $path);
     }
 }
 
@@ -73,11 +61,25 @@ if (!function_exists('resources_path')) {
      */
     function resources_path(string $path): string
     {
-        if (substr($path, 0, 1) !== '/') {
-            $path = '/' . $path;
+        return path_combine(app()->getResourcesDir(), $path);
+    }
+}
+
+if (!function_exists('path_combine')) {
+    /**
+     * 2つのpathをくっつける
+     *
+     * @param string $path1
+     * @param string $path2
+     * @return string
+     */
+    function path_combine(string $path_before, string $path_after): string
+    {
+        if (substr($path_after, 0, 1) !== '/') {
+            $path_after = '/' . $path_after;
         }
 
-        return app()->getResourcesDir() . $path;
+        return $path_before . $path_after;
     }
 }
 
