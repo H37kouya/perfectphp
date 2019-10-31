@@ -220,7 +220,7 @@ class Request
         $json = mb_convert_encoding(file_get_contents($mix_json), 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
         $arr = json_decode($json, true);
 
-        if ($arr === null) {
+        if (is_null($arr)) {
             return $this->asset($path);
         }
 
