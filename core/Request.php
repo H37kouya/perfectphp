@@ -212,10 +212,6 @@ class Request
 
     public function mix(string $path): string
     {
-        if (substr($path, 0, 1) !== '/') {
-            $path = '/' . $path;
-        }
-
         $mix_json = $this->webDir . '/mix-manifest.json';
         $json = mb_convert_encoding(file_get_contents($mix_json), 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
         $arr = json_decode($json, true);
